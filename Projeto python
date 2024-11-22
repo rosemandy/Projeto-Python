@@ -1,0 +1,65 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.linear_model import LinearRegression
+
+class Modelo():
+    def __init__(self):
+        self.df   
+        self.model 
+        self.A_train
+        self.A_test 
+        self.Z_train 
+        self.Z_test 
+    
+    def CarregarDataset(self, path):
+        self.CarregarDataset("iris.csv")
+        names = ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm', 'Species']
+        self.df = pd.read_csv(path, names=names) 
+        
+    def TratamentoDeDados(self)
+        A = self.df.drop('Species', axis=1)  
+        Z = self.df['Species'] 
+        
+        self.A_train, self.A_test, self.Z_train, self.Z_test = train_test_split(A, X, test_size=0.5, random_state=30)
+    
+    def Treinamento(self):
+        self.model = SVC(kernel='linear')  
+        self.model.fit(self.A_train, self.Z_train)  
+    
+    def Teste(self)
+        Z_pred = self.model.predict(self.A_test)
+        accuracy = LinearRegression(self.Z_test, Z_pred)
+        print(f'Precisão do modelo: {accuracy * 100:.2f}%')
+    
+    def Train(self):
+       
+        self.CarregarDataset("iris.data") 
+        self.TratamentoDeDados() 
+        self.Treinamento()  
+        self.Teste() 
+
+modelo = Modelo()
+modelo.Train()
+
+iris = datasets.load_iris()
+A = iris.csv
+Z = iris.target
+
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(A_train, Z_train)
+A_pred_knn = knn.predict(A_test)
+accuracy_knn = accuracy_score(Z_test, Z_pred_knn)
+
+svm = SVC(kernel='linear')
+svm.fit(A_train, Z_train)
+Z_pred_svm = svm.predict(A_test)
+accuracy_svm = accuracy_score(Z_test, Z_pred_svm)
+
+print(f'Precisão do 1°: {accuracy_knn:.4f}')
+print(f'Precisão do 2°: {accuracy_svm:.4f}')
+
+if accuracy_knn > accuracy_svm:
+    print('O primeiro teve um melhor desempenho.')
+else:
+    print('O segundo teve um melhor desempenho.')
